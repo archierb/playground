@@ -28,3 +28,22 @@ class KaraokeSong < Song
     "KS: #{@name}--#{@artist} (#{@duration} [#{@lyrics}])"
   end
 end
+
+class SongList
+  MaxTime = 5*60
+
+  def self.isTooLong(aSong)
+    return aSong.duration > MaxTime
+  end
+end
+
+class Logger
+  private_class_method :new
+  @@logger = nil
+
+  def self.create
+    @@logger = new unless @@logger
+    @@logger
+  end
+
+end
